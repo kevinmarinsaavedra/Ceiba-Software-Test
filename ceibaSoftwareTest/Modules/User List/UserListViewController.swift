@@ -101,7 +101,28 @@ extension UserListViewController: UserListViewDelegate {
 
 extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userListVM.usersFilter.count
+                
+        if !userListVM.usersFilter.isEmpty{
+            self.tableView.backgroundView = nil
+            return userListVM.usersFilter.count
+        }
+               
+        let rect = CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height)
+        let noDataLabel: UILabel = UILabel(frame: rect)
+        noDataLabel.textColor = .lightGray
+        noDataLabel.textAlignment = NSTextAlignment.center
+        
+        if activityIndicator.isAnimating{
+            noDataLabel.text = ""
+        }else if searchController.isActive{
+            noDataLabel.text = "La lista esta vacia"
+        }else{
+            noDataLabel.text = "No hay usuarios"
+        }
+        
+        self.tableView.backgroundView = noDataLabel
+               
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

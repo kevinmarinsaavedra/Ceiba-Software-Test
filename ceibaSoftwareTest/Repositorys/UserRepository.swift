@@ -34,9 +34,7 @@ final class UserRepository: UserRepositoryProtocol {
                 case .success(let users):
                     
                     //save in local database
-                    DispatchQueue.global(qos: .background).async {
-                        self.localDatabaseManager.setUsers(users: users)
-                    }
+                    self.localDatabaseManager.setUsers(users: users)
                     
                     completion(result)
                 case .failure(_):
