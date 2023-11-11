@@ -9,14 +9,14 @@ import Foundation
 
 // MARK: - User
 struct User: Codable {
-    let id: Int?
-    let name: String?
-    let username: String?
-    let email: String?
-    let address: Address?
-    let phone: String?
-    let website: String?
-    let company: Company?
+    var id: Int? = nil
+    var name: String? = nil
+    var username: String? = nil
+    var email: String? = nil
+    var address: Address? = nil
+    var phone: String? = nil
+    var website: String? = nil
+    var company: Company? = nil
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -29,4 +29,3 @@ struct User: Codable {
         case company = "company"
     }
 }
-

@@ -32,15 +32,15 @@ final class UserListPresenter: UserListPresenterProtocol {
     func fetchUsers() {
         self.view?.starLoading()
         
-        userRepository.fetchUser { result in
-            
-            self.view?.stopLoading()
+        userRepository.fetchUser { [self] result in
+            view?.stopLoading()
             
             switch result {
             case .success(let users):
-                self.view?.setUser(users: users)
-            case .failure(_):
-                return
+                view?.setUser(users: users)
+            case .failure(let error):
+                let error = ErrorModel(title: error.title,description: error.description)
+                view?.handleError(error: error)
             }
         }
     }

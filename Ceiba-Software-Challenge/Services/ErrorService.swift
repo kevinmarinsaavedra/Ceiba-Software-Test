@@ -13,11 +13,13 @@ enum ErrorService: Error, CustomStringConvertible {
     case unspecified
     case parameters
     
+    var title: String {
+        return self.description
+    }
+    
     var description: String {
         switch self {
-        case .network(let error):
-            return error.localizedDescription
-        case .parse(let error):
+        case .network(let error), .parse(let error):
             return error.localizedDescription
         case .unspecified:
             return "Unexpected error"

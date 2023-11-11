@@ -10,6 +10,7 @@ import UIKit
 protocol UserListViewDelegate: UIViewController {
     func starLoading()
     func stopLoading()
+    func handleError(error: ErrorModel?)
     func setUser(users: [User])
 }
 
@@ -65,17 +66,12 @@ final class UserListViewController: UIViewController {
     }
     
     private func setupView(){
-        
-        
-        //back Button
         navigationItem.title = "Lista de Contactos"
         navigationItem.searchController = searchController
         navigationItem.searchController?.automaticallyShowsScopeBar = true
         let backItem = UIBarButtonItem()
             backItem.title = "Atras"
-            navigationItem.backBarButtonItem = backItem
-        
-
+        navigationItem.backBarButtonItem = backItem
     }
     
     private func setupTableView() {
@@ -91,6 +87,12 @@ extension UserListViewController: UserListViewDelegate {
     
     func stopLoading() {
         activityIndicator.stopAnimating()
+    }
+    
+    func handleError(error: ErrorModel?) {
+        guard let error else { return}
+        
+        print(error.title, error.description)
     }
     
     func setUser(users: [User]) {

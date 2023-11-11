@@ -18,6 +18,7 @@ final class UserListTableViewCell: UITableViewCell {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var seePostsButton: UIButton!
     
     static let reuseIdentifier = "UserListTableViewCell"
     var user: User?

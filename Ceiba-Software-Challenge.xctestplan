@@ -1,0 +1,44 @@
+{
+  "configurations" : [
+    {
+      "id" : "C62E4157-3AA1-4385-9998-291272B007D1",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Ceiba-Software-Challenge.xcodeproj",
+          "identifier" : "3391D57626F40DCD007DF3BC",
+          "name" : "Ceiba-Software-Challenge"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Ceiba-Software-Challenge.xcodeproj",
+      "identifier" : "3391D57626F40DCD007DF3BC",
+      "name" : "Ceiba-Software-Challenge"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Ceiba-Software-Challenge.xcodeproj",
+        "identifier" : "3391D58C26F40DCE007DF3BC",
+        "name" : "Ceiba-Software-Challenge-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Ceiba-Software-Challenge.xcodeproj",
+        "identifier" : "3391D59726F40DCE007DF3BC",
+        "name" : "Ceiba-Software-Challenge-UITests"
+      }
+    }
+  ],
+  "version" : 1
+}
