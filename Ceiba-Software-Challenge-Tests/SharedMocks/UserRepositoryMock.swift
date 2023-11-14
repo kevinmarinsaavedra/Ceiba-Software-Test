@@ -9,7 +9,6 @@ import Foundation
 @testable import Ceiba_Software_Challenge
 
 class UserRepositoryMock: UserRepositoryProtocol, RepositoryUtils {
-    
     var filename: String? = nil
     var throwError: ErrorService? = nil
     var defaultData: [User] = []

@@ -8,9 +8,10 @@
 import UIKit
 
 protocol UserDetailsViewDelegate: UIViewController {
-    func starLoading()
+    func startLoading()
     func stopLoading()
-    func setPosts(posts: [Post.Model])
+    func handleError(error: ErrorModel?)
+    func setPosts(posts: [Post])
 }
 
 final class UserDetailsViewController: UIViewController {
@@ -23,11 +24,11 @@ final class UserDetailsViewController: UIViewController {
     }
     
     let presenter: UserDetailsPresenterProtocol
-    let user: User
-    var posts: [Post.Model] = []
+    
+    var userDetailsVM = UserDetails.ViewModel()
     
     init(presenter: UserDetailsPresenterProtocol, user: User) {
-        self.user = user
+        self.userDetailsVM.user = user
         self.presenter = presenter
         super.init(nibName: "UserDetailsViewController", bundle: nil)
         self.presenter.loadView(view: self)
@@ -45,11 +46,11 @@ final class UserDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        presenter.fetchPosts(byUserId: user.id)
+        presenter.fetchPosts(byUserId: userDetailsVM.user.id)
     }
     
     private func setupView(){
-        self.navigationItem.title = user.name ?? ""
+        self.navigationItem.title = userDetailsVM.user.name ?? ""
     }
     
     private func setupTableView() {
@@ -60,7 +61,7 @@ final class UserDetailsViewController: UIViewController {
 
 extension UserDetailsViewController: UserDetailsViewDelegate {
     
-    func starLoading() {
+    func startLoading() {
         activityIndicator.startAnimating()
     }
     
@@ -68,15 +69,21 @@ extension UserDetailsViewController: UserDetailsViewDelegate {
         activityIndicator.stopAnimating()
     }
     
-    func setPosts(posts: [Post.Model]) {
-        self.posts = posts
+    func handleError(error: ErrorModel?) {
+        guard let error else { return}
+        
+        print(error.title, error.description)
+    }
+    
+    func setPosts(posts: [Post]) {
+        self.userDetailsVM.posts = posts
         tableView.reloadData()
     }
 }
 
 extension UserDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return userDetailsVM.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,7 +91,7 @@ extension UserDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             return UITableViewCell()
         }
         
-        cell.configureCell(post: posts[indexPath.row])
+        cell.configureCell(post: userDetailsVM.posts[indexPath.row])
         
         return cell
     }

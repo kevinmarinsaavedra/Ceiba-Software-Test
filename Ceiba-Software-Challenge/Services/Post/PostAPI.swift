@@ -8,12 +8,12 @@
 import Foundation
 
 protocol PostServiceProtocol  {
-    func fetchPost( parameters: Post.Parameters?, completion: @escaping (Result<[Post.Model],ErrorService>) -> Void)
+    func fetchPost( parameters: PostParameters?, completion: @escaping (Result<[Post],ErrorService>) -> Void)
 }
 
 final class PostAPI: PostServiceProtocol {
     
-    func fetchPost(parameters: Post.Parameters?, completion: @escaping (Result<[Post.Model], ErrorService>) -> Void) {
+    func fetchPost(parameters: PostParameters?, completion: @escaping (Result<[Post], ErrorService>) -> Void) {
         
         guard let parameter = (parameters != nil) ? try? parameters.asDictionary() : nil else {
             completion(.failure(ErrorService.parameters))
@@ -25,10 +25,10 @@ final class PostAPI: PostServiceProtocol {
             switch result {
             case .success(let data):
                 do {
-                    let response = try JSONDecoder().decode([Post.Model].self, from: data)
+                    let response = try JSONDecoder().decode([Post].self, from: data)
                     completion(.success(response))
                 } catch let error {
-                    completion(.failure(.parse(error)))
+                    completion(.failure(.parse(description: error.localizedDescription)))
                 }
             case .failure(let error):
                 completion(.failure(error))

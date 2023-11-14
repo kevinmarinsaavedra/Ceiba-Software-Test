@@ -27,7 +27,7 @@ class UserListPresenterMock: UserListPresenterProtocol {
     
     func fetchUsers() {
         spyFetchUsers = true
-        self.view?.starLoading()
+        self.view?.startLoading()
         
         userRepository.fetchUser { [self] result in
             view.stopLoading()

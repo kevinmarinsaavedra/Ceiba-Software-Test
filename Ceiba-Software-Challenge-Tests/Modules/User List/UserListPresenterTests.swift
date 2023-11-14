@@ -42,7 +42,7 @@ class UserListPresenterTests: XCTestCase, TestUtils {
         awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(viewMock.spyStarLoading, "Show Loading is called")
+        XCTAssertTrue(viewMock.spyStartLoading, "Show Loading is called")
         XCTAssertTrue(viewMock.spyStopLoading, "Hide Loading is called")
         XCTAssertTrue(viewMock.spySetUsers, "Set data in view is called")
         XCTAssertTrue(viewMock.userListVM.users.isEmpty, "Should be and Array empty")
@@ -58,7 +58,7 @@ class UserListPresenterTests: XCTestCase, TestUtils {
         awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(viewMock.spyStarLoading, "Show Loading is called")
+        XCTAssertTrue(viewMock.spyStartLoading, "Show Loading is called")
         XCTAssertTrue(viewMock.spyStopLoading, "Hide Loading is called")
         XCTAssertTrue(viewMock.spySetUsers, "Set data in view is called")
         XCTAssertFalse(viewMock.userListVM.users.isEmpty, "Should not be an empty array")
@@ -74,9 +74,9 @@ class UserListPresenterTests: XCTestCase, TestUtils {
         awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(viewMock.spyStarLoading, "Show Loading is called")
+        XCTAssertTrue(viewMock.spyStartLoading, "Show Loading is called")
         XCTAssertTrue(viewMock.spyStopLoading, "Hide Loading is called")
-        XCTAssertTrue(viewMock.spyHandleError, "Set data in view is called")
+        XCTAssertTrue(viewMock.spyHandleError, "handleError in view is called")
         XCTAssertTrue(viewMock.userListVM.users.isEmpty, "Should be an Array empty")
         
         XCTAssertFalse(viewMock.spySetUsers, "Set data in view is called")

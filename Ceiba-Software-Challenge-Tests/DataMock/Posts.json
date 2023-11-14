@@ -1,0 +1,62 @@
+[
+    {
+        "userId": 1,
+        "id": 101,
+        "title": "Lorem Ipsum 1",
+        "body": "Body content for post 1"
+    },
+    {
+        "userId": 2,
+        "id": 102,
+        "title": "Lorem Ipsum 2",
+        "body": "Body content for post 2"
+    },
+    {
+        "userId": 3,
+        "id": 103,
+        "title": "Lorem Ipsum 3",
+        "body": "Body content for post 3"
+    },
+    {
+        "userId": 4,
+        "id": 104,
+        "title": "Lorem Ipsum 4",
+        "body": "Body content for post 4"
+    },
+    {
+        "userId": 5,
+        "id": 105,
+        "title": "Lorem Ipsum 5",
+        "body": "Body content for post 5"
+    },
+    {
+        "userId": 6,
+        "id": 106,
+        "title": "Lorem Ipsum 6",
+        "body": "Body content for post 6"
+    },
+    {
+        "userId": 7,
+        "id": 107,
+        "title": "Lorem Ipsum 7",
+        "body": "Body content for post 7"
+    },
+    {
+        "userId": 8,
+        "id": 108,
+        "title": "Lorem Ipsum 8",
+        "body": "Body content for post 8"
+    },
+    {
+        "userId": 9,
+        "id": 109,
+        "title": "Lorem Ipsum 9",
+        "body": "Body content for post 9"
+    },
+    {
+        "userId": 10,
+        "id": 110,
+        "title": "Lorem Ipsum 10",
+        "body": "Body content for post 10"
+    }
+]

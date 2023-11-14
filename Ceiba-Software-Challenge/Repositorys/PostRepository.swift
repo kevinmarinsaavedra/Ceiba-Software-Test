@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PostRepositoryProtocol {
-    func fetchPosts( parameters: Post.Parameters?, completion: @escaping (Result<[Post.Model],ErrorService>) -> Void)
+    func fetchPosts( parameters: PostParameters?, completion: @escaping (Result<[Post],ErrorService>) -> Void)
 }
 
 final class PostRepository: PostRepositoryProtocol {
@@ -19,7 +19,7 @@ final class PostRepository: PostRepositoryProtocol {
         self.postService = postService
     }
     
-    func fetchPosts( parameters: Post.Parameters?, completion: @escaping (Result<[Post.Model], ErrorService>) -> Void) {
+    func fetchPosts( parameters: PostParameters?, completion: @escaping (Result<[Post], ErrorService>) -> Void) {
         postService.fetchPost(parameters: parameters) { (result) in
             completion(result)
         }

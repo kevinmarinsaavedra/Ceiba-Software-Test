@@ -25,12 +25,13 @@ class UserListViewControllerTests: XCTestCase, TestUtils {
     }
     
     override func tearDownWithError() throws {
+        userRepositoryMock = nil
         userListPresenterMock = nil
         sut = nil
         expAsync = nil
     }
     
-    func test_navigationBar_with_info() throws {
+    func test_navigationBar_with_info() {
         //Arrange
         let expectedTitle = "Lista de Contactos"
         let expectedBackButtonTitle = "Atras"
@@ -42,22 +43,22 @@ class UserListViewControllerTests: XCTestCase, TestUtils {
         //Act
         
         //Assert
-        XCTAssertEqual(navigationItem.title, expectedTitle,
-                       "The navigation bar title should be '\(expectedTitle)'")
-        XCTAssertEqual(navigationItem.backBarButtonItem?.title, expectedBackButtonTitle,
-                       "The back button title should be '\(expectedBackButtonTitle)'")
-        XCTAssertEqual(searchBar.placeholder, searchBarPlaceHolderExpected,
-                       "The search bar placeholder should be '\(searchBarPlaceHolderExpected)'")
+        XCTAssertEqual(navigationItem.title, expectedTitle, "The navigation bar title should be '\(expectedTitle)'")
+        XCTAssertEqual(navigationItem.backBarButtonItem?.title, expectedBackButtonTitle, "The back button title should be '\(expectedBackButtonTitle)'")
+        XCTAssertEqual(searchBar.placeholder, searchBarPlaceHolderExpected, "The search bar placeholder should be '\(searchBarPlaceHolderExpected)'")
     }
     
     func test_tableView_empty() throws {
         // Arrange
+        expAsync = expectation(description: "waiting for data")
         let tableView = try XCTUnwrap(sut.tableView, "Optional tableView should not be nil")
         let tableViewBackgroundTitleExpected = "No hay usuarios"
         let sectionDefault = 0
         let numberOfRowsExpected = 0
+        
         //Act
         sut.viewWillAppear(true)
+        awaitExpAsync()
         
         // Assert
         XCTAssertTrue(userListPresenterMock.spyFetchUsers, "It should be called findUsers()")

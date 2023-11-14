@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserListViewDelegate: UIViewController {
-    func starLoading()
+    func startLoading()
     func stopLoading()
     func handleError(error: ErrorModel?)
     func setUser(users: [User])
@@ -81,7 +81,8 @@ final class UserListViewController: UIViewController {
 }
 
 extension UserListViewController: UserListViewDelegate {
-    func starLoading() {
+    
+    func startLoading() {
         activityIndicator.startAnimating()
     }
     

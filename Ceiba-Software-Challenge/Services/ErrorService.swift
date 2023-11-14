@@ -8,8 +8,8 @@
 import Foundation
 
 enum ErrorService: Error, CustomStringConvertible {
-    case network(Error)
-    case parse(Error)
+    case network(description: String)
+    case parse(description: String)
     case unspecified
     case parameters
     
@@ -19,8 +19,8 @@ enum ErrorService: Error, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .network(let error), .parse(let error):
-            return error.localizedDescription
+        case .network(let description), .parse(let description):
+            return description
         case .unspecified:
             return "Unexpected error"
         case .parameters:

@@ -27,19 +27,20 @@ final class UserDetailsPresenter: UserDetailsPresenterProtocol {
     
     func fetchPosts(byUserId userId: Int?) {
         
-        self.view?.starLoading()
+        self.view?.startLoading()
         
-        let parameter = Post.Parameters(userId: userId)        
+        let parameter = PostParameters(userId: userId)        
         
-        postRepository.fetchPosts(parameters: parameter) { (result) in
+        postRepository.fetchPosts(parameters: parameter) { [self] (result) in
             
-            self.view?.stopLoading()
+            view?.stopLoading()
 
             switch result {
             case .success(let posts):
-                self.view?.setPosts(posts: posts)
-            case .failure(_):
-                return
+                view?.setPosts(posts: posts)
+            case .failure(let error):
+                let error = ErrorModel(title: error.title,description: error.description)
+                view?.handleError(error: error)
             }
         }
     }

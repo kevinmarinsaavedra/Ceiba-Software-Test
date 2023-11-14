@@ -23,7 +23,7 @@ final class UserAPI: UserServiceProtocol {
                     let response = try JSONDecoder().decode([User].self, from: data)
                     completion(.success(response))
                 } catch let error {
-                    completion(.failure(.parse(error)))
+                    completion(.failure(.parse(description: error.localizedDescription)))
                 }
             case .failure(let error):
                 completion(.failure(error))

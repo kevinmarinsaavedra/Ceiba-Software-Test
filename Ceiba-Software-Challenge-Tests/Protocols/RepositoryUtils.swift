@@ -9,8 +9,11 @@ import Foundation
 @testable import Ceiba_Software_Challenge
 
 protocol RepositoryUtils {
+    associatedtype DataType: Decodable
+    
     var filename: String? { get set }
     var throwError: ErrorService? { get set }
+    var defaultData: DataType { get }
 }
 
 extension RepositoryUtils {
@@ -39,17 +42,17 @@ extension RepositoryUtils {
     
     func fetchData<T:Decodable>(_ filename: String?,
                                  _ throwError: ErrorService?,
-                                 _ dataDefault: T) async throws -> T {
+                                 _ defaultData: T) async throws -> T {
         do {
             if let filename {
-                return try await parseJsonToObject(filename: filename) ?? dataDefault
+                return try await parseJsonToObject(filename: filename) ?? defaultData
             }
             
             if let throwError {
                 throw throwError
             }
                 
-            return dataDefault
+            return defaultData
         } catch {
             throw error
         }

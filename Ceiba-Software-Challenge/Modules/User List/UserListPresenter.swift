@@ -30,7 +30,7 @@ final class UserListPresenter: UserListPresenterProtocol {
     }
     
     func fetchUsers() {
-        self.view?.starLoading()
+        self.view?.startLoading()
         
         userRepository.fetchUser { [self] result in
             view?.stopLoading()

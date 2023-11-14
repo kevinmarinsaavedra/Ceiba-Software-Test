@@ -60,9 +60,9 @@ final class NetworkService {
                             completion(
                                 .failure(
                                     .network(
-                                        AFError.responseValidationFailed(
+                                        description: AFError.responseValidationFailed(
                                             reason: .unacceptableStatusCode(code: 0)
-                                        )
+                                        ).localizedDescription
                                     )
                                 )
                             )
@@ -74,7 +74,9 @@ final class NetworkService {
                             completion(
                                 .failure(
                                     .network(
-                                        AFError.responseValidationFailed(reason: .dataFileNil)
+                                        description: AFError.responseValidationFailed(
+                                            reason: .dataFileNil
+                                        ).localizedDescription
                                     )
                                 )
                             )
@@ -87,7 +89,7 @@ final class NetworkService {
                         
                         completion(
                             .failure(
-                                .network(error)
+                                .network(description: error.localizedDescription)
                             )
                         )
                     }

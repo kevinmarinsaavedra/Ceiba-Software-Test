@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Ceiba-Software-Challenge.xctestplan"
+            reference = "container:Ceiba-Software-Challenge-Tests/Ceiba-Software-Challenge.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

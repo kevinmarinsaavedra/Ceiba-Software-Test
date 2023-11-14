@@ -21,7 +21,7 @@ final class UserDetailsTableViewCell: UITableViewCell {
         containerView.setNeedsLayout()
     }
     
-    func configureCell(post: Post.Model) {
+    func configureCell(post: Post) {
         title.text = post.title
         body.text = post.body
     }
