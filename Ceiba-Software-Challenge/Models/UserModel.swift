@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - User
-struct User: Codable {
+struct User: Codable, Equatable {
     var id: Int? = nil
     var name: String? = nil
     var username: String? = nil
@@ -27,5 +27,9 @@ struct User: Codable {
         case phone = "phone"
         case website = "website"
         case company = "company"
+    }
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id
     }
 }

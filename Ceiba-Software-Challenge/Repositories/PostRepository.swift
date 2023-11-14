@@ -20,7 +20,7 @@ final class PostRepository: PostRepositoryProtocol {
     }
     
     func fetchPosts( parameters: PostParameters?, completion: @escaping (Result<[Post], ErrorService>) -> Void) {
-        postService.fetchPost(parameters: parameters) { (result) in
+        postService.fetchPosts(parameters: parameters) { (result) in
             completion(result)
         }
     }

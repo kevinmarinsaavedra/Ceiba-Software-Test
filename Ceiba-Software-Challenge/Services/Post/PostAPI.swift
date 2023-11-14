@@ -8,12 +8,12 @@
 import Foundation
 
 protocol PostServiceProtocol  {
-    func fetchPost( parameters: PostParameters?, completion: @escaping (Result<[Post],ErrorService>) -> Void)
+    func fetchPosts( parameters: PostParameters?, completion: @escaping (Result<[Post],ErrorService>) -> Void)
 }
 
 final class PostAPI: PostServiceProtocol {
     
-    func fetchPost(parameters: PostParameters?, completion: @escaping (Result<[Post], ErrorService>) -> Void) {
+    func fetchPosts(parameters: PostParameters?, completion: @escaping (Result<[Post], ErrorService>) -> Void) {
         
         guard let parameter = (parameters != nil) ? try? parameters.asDictionary() : nil else {
             completion(.failure(ErrorService.parameters))

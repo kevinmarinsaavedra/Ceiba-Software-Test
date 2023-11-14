@@ -77,7 +77,7 @@ class UserListPresenterTests: XCTestCase, TestUtils {
         XCTAssertTrue(viewMock.spyStartLoading, "Show Loading is called")
         XCTAssertTrue(viewMock.spyStopLoading, "Hide Loading is called")
         XCTAssertTrue(viewMock.spyHandleError, "handleError in view is called")
-        XCTAssertTrue(viewMock.userListVM.users.isEmpty, "Should be an Array empty")
+        XCTAssertTrue(viewMock.userListVM.users.isEmpty, "Should be an empty array")
         
         XCTAssertFalse(viewMock.spySetUsers, "Set data in view is called")
     }

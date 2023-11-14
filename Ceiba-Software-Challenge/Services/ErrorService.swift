@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ErrorService: Error, CustomStringConvertible {
+enum ErrorService: Error, CustomStringConvertible, Equatable {
     case network(description: String)
     case parse(description: String)
     case unspecified

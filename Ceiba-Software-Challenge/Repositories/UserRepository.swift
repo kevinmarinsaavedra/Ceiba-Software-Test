@@ -32,7 +32,6 @@ final class UserRepository: UserRepositoryProtocol {
             userService?.fetchUser(completion: { (result) in
                 switch result {
                 case .success(let users):
-                    
                     //save in local database
                     self.localDatabaseManager.setUsers(users: users)
                     

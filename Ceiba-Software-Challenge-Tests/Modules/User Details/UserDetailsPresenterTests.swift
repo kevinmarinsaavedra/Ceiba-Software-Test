@@ -39,10 +39,10 @@ class UserDetailsPresenterTests: XCTestCase, TestUtils {
         awaitExpAsync()
 
         //Assert
-        XCTAssertTrue(viewMock.spyStartLoading)
-        XCTAssertTrue(viewMock.spyStopLoading)
-        XCTAssertTrue(viewMock.spySetPosts)
-        XCTAssertTrue(viewMock.userDetailsVM.posts.isEmpty)
+        XCTAssertTrue(viewMock.spyStartLoading, "Show loading is called")
+        XCTAssertTrue(viewMock.spyStopLoading, "Hiddin loading is called")
+        XCTAssertTrue(viewMock.spySetPosts, "Set data in view is called")
+        XCTAssertTrue(viewMock.userDetailsVM.posts.isEmpty, "Should be an array empty")
 
     }
     
@@ -56,10 +56,10 @@ class UserDetailsPresenterTests: XCTestCase, TestUtils {
         awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(viewMock.spyStartLoading)
-        XCTAssertTrue(viewMock.spyStopLoading)
-        XCTAssertTrue(viewMock.spySetPosts)
-        XCTAssertFalse(viewMock.userDetailsVM.posts.isEmpty)
+        XCTAssertTrue(viewMock.spyStartLoading, "Show loading is called")
+        XCTAssertTrue(viewMock.spyStopLoading, "Hiddin loadin is called")
+        XCTAssertTrue(viewMock.spySetPosts, "Set data in view is called")
+        XCTAssertFalse(viewMock.userDetailsVM.posts.isEmpty, "Should not be an array empty")
         
     }
     
@@ -73,10 +73,10 @@ class UserDetailsPresenterTests: XCTestCase, TestUtils {
         awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(viewMock.spyStartLoading)
-        XCTAssertTrue(viewMock.spyStopLoading)
+        XCTAssertTrue(viewMock.spyStartLoading, "Show loading is called")
+        XCTAssertTrue(viewMock.spyStopLoading, "Hidden loading is called")
         XCTAssertTrue(viewMock.spyHandleError, "handleError in view is called")
-        XCTAssertTrue(viewMock.userDetailsVM.posts.isEmpty)
+        XCTAssertTrue(viewMock.userDetailsVM.posts.isEmpty, "Should be an array empty")
         
         XCTAssertFalse(viewMock.spySetPosts, "Set data in view is called")
     }
@@ -91,8 +91,8 @@ class UserDetailsPresenterTests: XCTestCase, TestUtils {
         awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(viewMock.spyStartLoading)
-        XCTAssertTrue(viewMock.spyStopLoading)
+        XCTAssertTrue(viewMock.spyStartLoading, "Show loading is called")
+        XCTAssertTrue(viewMock.spyStopLoading, "Hidden loading is called")
         XCTAssertTrue(viewMock.spyHandleError, "handleError in view is called")
         XCTAssertTrue(viewMock.userDetailsVM.posts.isEmpty)
         
