@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import  Alamofire
+import Alamofire
 
 enum UserEndpoint {
     case fetchUsers

@@ -18,7 +18,11 @@ protocol IEndpoint {
     var encoding: ParameterEncoding { get }
 }
 
-final class NetworkService {
+protocol NetworkServiceProtocol {
+    func request<T: IEndpoint>(endpoint: T, completion: @escaping (Swift.Result<Data, ErrorService>) -> Void)
+}
+
+final class NetworkService: NetworkServiceProtocol {
     static let share = NetworkService()
     
     private var dataRequest: DataRequest?

@@ -13,9 +13,15 @@ protocol UserServiceProtocol  {
 
 final class UserAPI: UserServiceProtocol {
     
+    private let networkService: any NetworkServiceProtocol
+    
+    init(networkService: any NetworkServiceProtocol = NetworkService.share) {
+        self.networkService = networkService
+    }
+    
     func fetchUser( completion: @escaping (Result<[User], ErrorService>) -> Void) {
                 
-        NetworkService.share.request(endpoint: UserEndpoint.fetchUsers) { result in
+        networkService.request(endpoint: UserEndpoint.fetchUsers) { result in
             
             switch result {
             case .success(let data):

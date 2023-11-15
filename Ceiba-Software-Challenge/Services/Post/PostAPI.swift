@@ -13,6 +13,12 @@ protocol PostServiceProtocol  {
 
 final class PostAPI: PostServiceProtocol {
     
+    private let networkService: any NetworkServiceProtocol
+    
+    init(networkService: any NetworkServiceProtocol = NetworkService.share) {
+        self.networkService = networkService
+    }
+    
     func fetchPosts(parameters: PostParameters?, completion: @escaping (Result<[Post], ErrorService>) -> Void) {
         
         guard let parameter = (parameters != nil) ? try? parameters.asDictionary() : nil else {
@@ -20,7 +26,7 @@ final class PostAPI: PostServiceProtocol {
             return
         }
         
-        NetworkService.share.request(endpoint: PostEndpoint.fetchPosts(parameters: parameter)) { result in
+        networkService.request(endpoint: PostEndpoint.fetchPosts(parameters: parameter)) { result in
             
             switch result {
             case .success(let data):

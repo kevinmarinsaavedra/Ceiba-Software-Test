@@ -35,6 +35,12 @@
 		334336742B0361750055FA0B /* LocalDatabaseManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334336732B0361750055FA0B /* LocalDatabaseManagerMock.swift */; };
 		334336762B03627E0055FA0B /* UserServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334336752B03627E0055FA0B /* UserServiceMock.swift */; };
 		334336782B03879E0055FA0B /* PostServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334336772B03879E0055FA0B /* PostServiceMock.swift */; };
+		3343367D2B03B94D0055FA0B /* UserEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343367C2B03B94D0055FA0B /* UserEndpointTests.swift */; };
+		3343367F2B03C03A0055FA0B /* PostEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3343367E2B03C03A0055FA0B /* PostEndpointTests.swift */; };
+		334336812B03C2E40055FA0B /* UserAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334336802B03C2E40055FA0B /* UserAPITests.swift */; };
+		334336832B03C3120055FA0B /* PostAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334336822B03C3120055FA0B /* PostAPITests.swift */; };
+		334336872B055D610055FA0B /* UserModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334336862B055D610055FA0B /* UserModelTests.swift */; };
+		334336892B07CF7A0055FA0B /* NetworkingServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334336882B07CF7A0055FA0B /* NetworkingServiceMock.swift */; };
 		335BA9C42AF15173004B0DC7 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335BA9C32AF15173004B0DC7 /* AppCoordinatorTests.swift */; };
 		335BA9C92AF154A2004B0DC7 /* UserListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335BA9C82AF154A2004B0DC7 /* UserListPresenterTests.swift */; };
 		335BA9CC2AF16043004B0DC7 /* UserRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335BA9CB2AF16043004B0DC7 /* UserRepositoryMock.swift */; };
@@ -120,6 +126,12 @@
 		334336732B0361750055FA0B /* LocalDatabaseManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabaseManagerMock.swift; sourceTree = "<group>"; };
 		334336752B03627E0055FA0B /* UserServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceMock.swift; sourceTree = "<group>"; };
 		334336772B03879E0055FA0B /* PostServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostServiceMock.swift; sourceTree = "<group>"; };
+		3343367C2B03B94D0055FA0B /* UserEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpointTests.swift; sourceTree = "<group>"; };
+		3343367E2B03C03A0055FA0B /* PostEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEndpointTests.swift; sourceTree = "<group>"; };
+		334336802B03C2E40055FA0B /* UserAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPITests.swift; sourceTree = "<group>"; };
+		334336822B03C3120055FA0B /* PostAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPITests.swift; sourceTree = "<group>"; };
+		334336862B055D610055FA0B /* UserModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelTests.swift; sourceTree = "<group>"; };
+		334336882B07CF7A0055FA0B /* NetworkingServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceMock.swift; sourceTree = "<group>"; };
 		335BA9C32AF15173004B0DC7 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		335BA9C82AF154A2004B0DC7 /* UserListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPresenterTests.swift; sourceTree = "<group>"; };
 		335BA9CB2AF16043004B0DC7 /* UserRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryMock.swift; sourceTree = "<group>"; };
@@ -252,6 +264,41 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		334336792B03B1760055FA0B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3343367A2B03B18D0055FA0B /* User */,
+				3343367B2B03B1960055FA0B /* Post */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3343367A2B03B18D0055FA0B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3343367C2B03B94D0055FA0B /* UserEndpointTests.swift */,
+				334336802B03C2E40055FA0B /* UserAPITests.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		3343367B2B03B1960055FA0B /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				3343367E2B03C03A0055FA0B /* PostEndpointTests.swift */,
+				334336822B03C3120055FA0B /* PostAPITests.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		334336852B055D140055FA0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				334336862B055D610055FA0B /* UserModelTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		335BA9C22AF15128004B0DC7 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +338,7 @@
 				335BA9E22AF458DB004B0DC7 /* UserListPresenterMock.swift */,
 				335BA9CF2AF1AB8A004B0DC7 /* UserListViewMock.swift */,
 				334336732B0361750055FA0B /* LocalDatabaseManagerMock.swift */,
+				334336882B07CF7A0055FA0B /* NetworkingServiceMock.swift */,
 			);
 			path = SharedMocks;
 			sourceTree = "<group>";
@@ -369,6 +417,8 @@
 				335BA9D72AF30047004B0DC7 /* Protocols */,
 				335BA9D12AF2C81A004B0DC7 /* DataMock */,
 				335BA9CA2AF15BD0004B0DC7 /* SharedMocks */,
+				334336792B03B1760055FA0B /* Services */,
+				334336852B055D140055FA0B /* Models */,
 				335BA9C22AF15128004B0DC7 /* Coordinator */,
 				3343366E2B035EAA0055FA0B /* Repositories */,
 				335BA9C52AF15450004B0DC7 /* Modules */,
@@ -679,6 +729,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				335BA9E42AF458DB004B0DC7 /* UserListPresenterMock.swift in Sources */,
+				3343367F2B03C03A0055FA0B /* PostEndpointTests.swift in Sources */,
 				334336702B035F3F0055FA0B /* UserRepositoryTests.swift in Sources */,
 				334336742B0361750055FA0B /* LocalDatabaseManagerMock.swift in Sources */,
 				335BA9C42AF15173004B0DC7 /* AppCoordinatorTests.swift in Sources */,
@@ -687,6 +738,8 @@
 				334336722B035F6A0055FA0B /* PostRepositoryTests.swift in Sources */,
 				33CD67882AFE83AC00322938 /* TestUtils.swift in Sources */,
 				3343366B2B0282810055FA0B /* UserDetailsPresenterMock.swift in Sources */,
+				334336872B055D610055FA0B /* UserModelTests.swift in Sources */,
+				3343367D2B03B94D0055FA0B /* UserEndpointTests.swift in Sources */,
 				335BA9CC2AF16043004B0DC7 /* UserRepositoryMock.swift in Sources */,
 				335BA9CE2AF16164004B0DC7 /* CoordinatorMock.swift in Sources */,
 				33CD67912B00200600322938 /* UserDetailsPresenterTests.swift in Sources */,
@@ -695,6 +748,9 @@
 				335BA9DA2AF3006A004B0DC7 /* RepositoryUtils.swift in Sources */,
 				334336782B03879E0055FA0B /* PostServiceMock.swift in Sources */,
 				33CD67972B002F3800322938 /* UserDetailsViewMock.swift in Sources */,
+				334336832B03C3120055FA0B /* PostAPITests.swift in Sources */,
+				334336892B07CF7A0055FA0B /* NetworkingServiceMock.swift in Sources */,
+				334336812B03C2E40055FA0B /* UserAPITests.swift in Sources */,
 				334336762B03627E0055FA0B /* UserServiceMock.swift in Sources */,
 				335BA9D02AF1AB8A004B0DC7 /* UserListViewMock.swift in Sources */,
 			);

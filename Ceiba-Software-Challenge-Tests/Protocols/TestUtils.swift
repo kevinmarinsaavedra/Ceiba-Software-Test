@@ -12,8 +12,8 @@ protocol TestUtils: XCTestCase {
 
 extension TestUtils {
     
-    func awaitExpAsync(timeOut: TimeInterval = 1.0) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [self] in
+    func awaitExpAsync(deadline: TimeInterval = 0.2, timeOut: TimeInterval = 5.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + deadline) { [self] in
             expAsync.fulfill()
         }
         
