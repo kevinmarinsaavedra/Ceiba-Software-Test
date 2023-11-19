@@ -13,9 +13,9 @@ protocol UserServiceProtocol  {
 
 final class UserAPI: UserServiceProtocol {
     
-    private let networkService: any NetworkServiceProtocol
+    private let networkService: any NetworkServiceRequestProtocol
     
-    init(networkService: any NetworkServiceProtocol = NetworkService.share) {
+    init(networkService: any NetworkServiceRequestProtocol = NetworkService.share) {
         self.networkService = networkService
     }
     

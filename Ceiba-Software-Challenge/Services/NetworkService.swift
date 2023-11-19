@@ -18,15 +18,23 @@ protocol IEndpoint {
     var encoding: ParameterEncoding { get }
 }
 
-protocol NetworkServiceProtocol {
-    func request<T: IEndpoint>(endpoint: T, completion: @escaping (Swift.Result<Data, ErrorService>) -> Void)
+protocol NetworkServiceRequestProtocol {
+    func request<T: IEndpoint>(endpoint: T, completion: @escaping (Swift.Result<Data, ErrorService>) -> Void) -> DataRequest?
 }
 
-final class NetworkService: NetworkServiceProtocol {
+protocol NetworkServiceCancelRequestProtocol {
+    func cancelRequest(request: DataRequest, _ completion: (()->Void)?)
+}
+
+protocol NetworkServiceCancelAllRequestProtocol {
+    func cancelAllRequest(_ completion: (()->Void)?)
+}
+
+final class NetworkService {
     static let share = NetworkService()
-    
-    private var dataRequest: DataRequest?
-    
+
+    private var requests: [DataRequest] = []
+
     @discardableResult
     private func _dataRequest(url: URLConvertible,
                               method: HTTPMethod = .get,
@@ -35,81 +43,75 @@ final class NetworkService: NetworkServiceProtocol {
                               headers: HTTPHeaders? = nil,
                               interceptor: RequestInterceptor? = nil) -> DataRequest {
         
-            return Session.default.request(url,
-                                           method: method,
-                                           parameters: parameters,
-                                           encoding: encoding,
-                                           headers: headers,
-                                           interceptor: interceptor)
+        let request = AF.request(
+            url,
+            method: method,
+            parameters: parameters,
+            encoding: encoding,
+            headers: headers,
+            interceptor: interceptor
+        )
+        
+        requests.append(request)
+        return request
     }
-    
-    func request<T: IEndpoint>(endpoint: T, completion: @escaping (Swift.Result<Data, ErrorService>) -> Void) {
+}
+
+extension NetworkService: NetworkServiceRequestProtocol {
+    func request<T: IEndpoint>(endpoint: T, completion: @escaping (Result<Data, ErrorService>) -> Void) -> DataRequest? {
+        var dataRequest: DataRequest?
+        
+        dataRequest = self._dataRequest(url: endpoint.path,
+                                        method: endpoint.method,
+                                        parameters: endpoint.parameter,
+                                        encoding: endpoint.encoding,
+                                        headers: endpoint.header,
+                                        interceptor: endpoint.interceptor)
+        
         DispatchQueue.global(qos: .background).async {
-            var dataRequest: DataRequest?
-            
-            dataRequest = self._dataRequest(url: endpoint.path,
-                                            method: endpoint.method,
-                                            parameters: endpoint.parameter,
-                                            encoding: endpoint.encoding,
-                                            headers: endpoint.header,
-                                            interceptor: endpoint.interceptor)
-            
             dataRequest?
                 .validate()
                 .response(completionHandler: { (response) in
-                    
                     switch response.result {
                     case .success(let data):
-                        guard (response.response?.statusCode) != nil else {
-                            completion(
-                                .failure(
-                                    .network(
-                                        description: AFError.responseValidationFailed(
-                                            reason: .unacceptableStatusCode(code: 0)
-                                        ).localizedDescription
-                                    )
-                                )
-                            )
-                            
-                            return
-                        }
-                        
                         guard let data = data else {
-                            completion(
-                                .failure(
-                                    .network(
-                                        description: AFError.responseValidationFailed(
-                                            reason: .dataFileNil
-                                        ).localizedDescription
-                                    )
-                                )
-                            )
+                            let errorDescription = AFError.responseValidationFailed(
+                                reason: .dataFileNil
+                            ).localizedDescription
+                            let error = ErrorService.errorData(description: errorDescription)
+                            completion(.failure(error))
                             return
                         }
                         
                         completion(.success(data))
                         
                     case .failure(let error):
-                        
-                        completion(
-                            .failure(
-                                .network(description: error.localizedDescription)
-                            )
-                        )
+                        let error = ErrorService.network(description: error.localizedDescription)
+                        completion(.failure(error))
                     }
             })
         }
-    }
         
-    func cancelRequest(_ completion: (()->Void)? = nil) {
-        dataRequest?.cancel()
-        completion?()
+        return dataRequest
     }
+}
+
+extension NetworkService: NetworkServiceCancelRequestProtocol {
     
-    func cancelAllRequest(_ completion: (()->Void)? = nil) {
-        dataRequest?.tasks.forEach({ (task) in
-            task.cancel()
-        })
+    func cancelRequest(request: DataRequest, _ completion: (() -> Void)?) {
+        request.cancel()
         completion?()
     }
 }
+
+extension NetworkService: NetworkServiceCancelAllRequestProtocol {
+    
+    func cancelAllRequest(_ completion: (()->Void)?) {
+        requests.forEach {
+            $0.cancel()
+        }
+        requests.removeAll()
+        completion?()
+    }
+}
+

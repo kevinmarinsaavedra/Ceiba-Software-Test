@@ -6,20 +6,21 @@
 //
 
 import Foundation
+import Alamofire
 @testable import Ceiba_Software_Challenge
 
-class NetworkingServiceMock<D: Encodable>: NetworkServiceProtocol {
+class NetworkServiceMock<D: Encodable>: NetworkServiceRequestProtocol {
     var throwError: ErrorService!
     var dataDecoder: D!
     
-    func request<T>(endpoint: T, completion: @escaping (Result<Data, ErrorService>) -> Void) where T : IEndpoint {
+    func request<T: IEndpoint>(endpoint: T, completion: @escaping (Result<Data, ErrorService>) -> Void) -> DataRequest? {
         if let throwError {
-            switch throwError{
+            switch throwError {
             case .parse(_):
                 dataDecoder = [ParsingErrorModel(), ParsingErrorModel(), ParsingErrorModel()] as? D
             default:
                 completion(.failure(throwError))
-                return
+                return nil
             }
         }
         
@@ -29,10 +30,11 @@ class NetworkingServiceMock<D: Encodable>: NetworkServiceProtocol {
         } catch {
             completion(.failure(.parse(description: "error parsing input data")))
         }
+        
+        return nil
     }
 }
 
-// MARK: - User
 struct ParsingErrorModel: Codable, Equatable {
     var property: Int? = nil
 

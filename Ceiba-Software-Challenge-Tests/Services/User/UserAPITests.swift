@@ -11,11 +11,11 @@ import XCTest
 class UserAPITests: XCTestCase, TestUtils {
     var expAsync: XCTestExpectation!
     
-    var networkingServiceMock: NetworkingServiceMock<[User]>!
+    var networkingServiceMock: NetworkServiceMock<[User]>!
     var sut: UserAPI!
     
     override func setUpWithError() throws {
-        networkingServiceMock = NetworkingServiceMock()
+        networkingServiceMock = NetworkServiceMock()
         sut = UserAPI(networkService: networkingServiceMock)
     }
     

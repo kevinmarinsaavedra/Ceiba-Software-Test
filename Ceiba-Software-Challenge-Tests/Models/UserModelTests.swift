@@ -13,15 +13,15 @@ class UserModelTests: XCTestCase {
     
     func test_userCodable() throws {
         //Arrange
-        let user = User(id: 1, name: "John Doe", username: "john_doe", email: "john@example.com",
+        let sut = User(id: 1, name: "John Doe", username: "john_doe", email: "john@example.com",
                         address: nil, phone: "123456789", website: "example.com", company: nil)
 
         //Act
-        let data = try JSONEncoder().encode(user)
+        let data = try JSONEncoder().encode(sut)
         let decodedUser = try JSONDecoder().decode(User.self, from: data)
         
         //Assert
-        XCTAssertEqual(user, decodedUser, "Encoded and decoded users should match")
+        XCTAssertEqual(sut, decodedUser, "Encoded and decoded users should match")
     }
     
     func test_userEquatable() {

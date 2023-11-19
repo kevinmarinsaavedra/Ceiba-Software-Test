@@ -12,6 +12,7 @@ enum ErrorService: Error, CustomStringConvertible, Equatable {
     case parse(description: String)
     case unspecified
     case parameters
+    case errorData(description: String)
     
     var title: String {
         return self.description
@@ -19,7 +20,7 @@ enum ErrorService: Error, CustomStringConvertible, Equatable {
     
     var description: String {
         switch self {
-        case .network(let description), .parse(let description):
+        case .network(let description), .parse(let description), .errorData(let description):
             return description
         case .unspecified:
             return "Unexpected error"
