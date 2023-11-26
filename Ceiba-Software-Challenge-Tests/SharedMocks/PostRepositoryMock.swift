@@ -17,7 +17,7 @@ class PostRepositoryMock: PostRepositoryProtocol, RepositoryUtils {
     
     func fetchPosts(parameters: PostParameters?, completion: @escaping (Result<[Post], ErrorService>) -> Void) {
         
-        var spyFetchPosts = true
+        spyFetchPosts = true
         
         Task {
             do {

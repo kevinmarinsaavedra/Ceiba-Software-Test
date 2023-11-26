@@ -89,6 +89,11 @@
 		33E19A1B2B0D5E4D0010CDCC /* TestURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E19A1A2B0D5E4D0010CDCC /* TestURLSessionDelegate.swift */; };
 		33E19A212B1282A60010CDCC /* EncodableCeibaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E19A202B1282A60010CDCC /* EncodableCeibaTests.swift */; };
 		33E19A232B128B720010CDCC /* UIColorCeibaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E19A222B128B720010CDCC /* UIColorCeibaTest.swift */; };
+		33E19A262B12A5FA0010CDCC /* AddressCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E19A252B12A5FA0010CDCC /* AddressCacheTests.swift */; };
+		33E19A282B12A8020010CDCC /* UserCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E19A272B12A8020010CDCC /* UserCacheTests.swift */; };
+		33E19A2A2B12A9B50010CDCC /* CompanyCacheTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E19A292B12A9B50010CDCC /* CompanyCacheTest.swift */; };
+		33E19A2C2B12ABF00010CDCC /* GeoCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E19A2B2B12ABF00010CDCC /* GeoCacheTests.swift */; };
+		33E19A2F2B12B2100010CDCC /* RealmDataBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E19A2E2B12B2100010CDCC /* RealmDataBaseTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +197,11 @@
 		33E19A1A2B0D5E4D0010CDCC /* TestURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestURLSessionDelegate.swift; sourceTree = "<group>"; };
 		33E19A202B1282A60010CDCC /* EncodableCeibaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableCeibaTests.swift; sourceTree = "<group>"; };
 		33E19A222B128B720010CDCC /* UIColorCeibaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorCeibaTest.swift; sourceTree = "<group>"; };
+		33E19A252B12A5FA0010CDCC /* AddressCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCacheTests.swift; sourceTree = "<group>"; };
+		33E19A272B12A8020010CDCC /* UserCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCacheTests.swift; sourceTree = "<group>"; };
+		33E19A292B12A9B50010CDCC /* CompanyCacheTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCacheTest.swift; sourceTree = "<group>"; };
+		33E19A2B2B12ABF00010CDCC /* GeoCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCacheTests.swift; sourceTree = "<group>"; };
+		33E19A2E2B12B2100010CDCC /* RealmDataBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -433,6 +443,7 @@
 				33CD678C2B001BFD00322938 /* Ceiba-Software-Challenge.xctestplan */,
 				33E19A152B0D2BBF0010CDCC /* Utils */,
 				33E19A1E2B1281C10010CDCC /* Extension */,
+				33E19A242B12A5AF0010CDCC /* Cache */,
 				335BA9D12AF2C81A004B0DC7 /* DataMock */,
 				335BA9CA2AF15BD0004B0DC7 /* SharedMocks */,
 				334336792B03B1760055FA0B /* Services */,
@@ -581,6 +592,26 @@
 				33E19A1A2B0D5E4D0010CDCC /* TestURLSessionDelegate.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		33E19A242B12A5AF0010CDCC /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				33E19A2D2B12B1DC0010CDCC /* Models */,
+				33E19A2E2B12B2100010CDCC /* RealmDataBaseTest.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		33E19A2D2B12B1DC0010CDCC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				33E19A272B12A8020010CDCC /* UserCacheTests.swift */,
+				33E19A252B12A5FA0010CDCC /* AddressCacheTests.swift */,
+				33E19A2B2B12ABF00010CDCC /* GeoCacheTests.swift */,
+				33E19A292B12A9B50010CDCC /* CompanyCacheTest.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -778,6 +809,7 @@
 				338BEADD2B0934C100B3BBEF /* NetworkiServiceTests.swift in Sources */,
 				335BA9E42AF458DB004B0DC7 /* UserListPresenterMock.swift in Sources */,
 				33E19A232B128B720010CDCC /* UIColorCeibaTest.swift in Sources */,
+				33E19A282B12A8020010CDCC /* UserCacheTests.swift in Sources */,
 				3343367F2B03C03A0055FA0B /* PostEndpointTests.swift in Sources */,
 				334336702B035F3F0055FA0B /* UserRepositoryTests.swift in Sources */,
 				338BEADF2B093F1B00B3BBEF /* TestEndpointMock.swift in Sources */,
@@ -787,6 +819,7 @@
 				3343366D2B02898A0055FA0B /* UserDetailsViewControllerTests.swift in Sources */,
 				335BA9E12AF457CD004B0DC7 /* UserListViewControllerTests.swift in Sources */,
 				334336722B035F6A0055FA0B /* PostRepositoryTests.swift in Sources */,
+				33E19A262B12A5FA0010CDCC /* AddressCacheTests.swift in Sources */,
 				33CD67882AFE83AC00322938 /* TestUtils.swift in Sources */,
 				3343366B2B0282810055FA0B /* UserDetailsPresenterMock.swift in Sources */,
 				334336872B055D610055FA0B /* UserModelTests.swift in Sources */,
@@ -795,14 +828,17 @@
 				3343367D2B03B94D0055FA0B /* UserEndpointTests.swift in Sources */,
 				335BA9CC2AF16043004B0DC7 /* UserRepositoryMock.swift in Sources */,
 				335BA9CE2AF16164004B0DC7 /* CoordinatorMock.swift in Sources */,
+				33E19A2F2B12B2100010CDCC /* RealmDataBaseTest.swift in Sources */,
 				33CD67912B00200600322938 /* UserDetailsPresenterTests.swift in Sources */,
 				335BA9C92AF154A2004B0DC7 /* UserListPresenterTests.swift in Sources */,
+				33E19A2C2B12ABF00010CDCC /* GeoCacheTests.swift in Sources */,
 				33CD67932B00213400322938 /* PostRepositoryMock.swift in Sources */,
 				335BA9DA2AF3006A004B0DC7 /* RepositoryUtils.swift in Sources */,
 				334336782B03879E0055FA0B /* PostServiceMock.swift in Sources */,
 				33CD67972B002F3800322938 /* UserDetailsViewMock.swift in Sources */,
 				334336832B03C3120055FA0B /* PostAPITests.swift in Sources */,
 				334336892B07CF7A0055FA0B /* NetworkingServiceMock.swift in Sources */,
+				33E19A2A2B12A9B50010CDCC /* CompanyCacheTest.swift in Sources */,
 				334336812B03C2E40055FA0B /* UserAPITests.swift in Sources */,
 				334336762B03627E0055FA0B /* UserServiceMock.swift in Sources */,
 				33E19A192B0D5E2B0010CDCC /* RequestInterceptorAdapter.swift in Sources */,

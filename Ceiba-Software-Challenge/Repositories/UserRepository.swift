@@ -28,19 +28,18 @@ final class UserRepository: UserRepositoryProtocol {
         
         if !users.isEmpty {
             completion(.success(users))
-        } else {
-            userService?.fetchUser(completion: { (result) in
-                switch result {
-                case .success(let users):
-                    //save in local database
-                    self.localDatabaseManager.setUsers(users: users)
-                    
-                    completion(result)
-                case .failure(_):
-                    completion(result)
-                }
-            })
         }
+        
+        userService?.fetchUser(completion: { (result) in
+            switch result {
+            case .success(let users):
+                //save in local database
+                self.localDatabaseManager.setUsers(users: users)
                 
+                completion(result)
+            case .failure(_):
+                completion(result)
+            }
+        })    
     }
 }

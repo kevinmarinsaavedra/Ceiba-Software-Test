@@ -56,6 +56,7 @@ class UserDetailsPresenterTests: XCTestCase, TestUtils {
         awaitExpAsync()
         
         //Assert
+        XCTAssertTrue(postRepositorMock.spyFetchPosts)
         XCTAssertTrue(viewMock.spyStartLoading, "Show loading is called")
         XCTAssertTrue(viewMock.spyStopLoading, "Hiddin loadin is called")
         XCTAssertTrue(viewMock.spySetPosts, "Set data in view is called")

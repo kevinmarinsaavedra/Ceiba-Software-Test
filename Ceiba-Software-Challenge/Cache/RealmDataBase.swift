@@ -14,7 +14,12 @@ protocol LocalDatabaseManager {
 
 final class RealmDataBase: LocalDatabaseManager {
     
-    let realm = try? Realm()
+    var realm: Realm!
+    
+    init(identifier: String = "CeibaLocalDB") {
+        let configuration = Realm.Configuration(inMemoryIdentifier: identifier)
+        realm = try! Realm(configuration: configuration)
+    }
         
     func getUsers() -> [User] {
         // Access all UserCache in the realm
@@ -52,6 +57,8 @@ final class RealmDataBase: LocalDatabaseManager {
     
     func setUsers(users: [User]) {
         
+        resetDB()
+        
         let users = users.map { (user) -> UserCache in
             
             let geoCache = GeoCache(lat: user.address?.geo?.lat, lng: user.address?.geo?.lng)
@@ -78,7 +85,6 @@ final class RealmDataBase: LocalDatabaseManager {
         
         do {
             try realm?.write {
-                // Add the instance to the realm.
                 realm?.add(users)
             }
         } catch {
@@ -87,4 +93,13 @@ final class RealmDataBase: LocalDatabaseManager {
 
     }
     
+    func resetDB(){
+        do {
+            try realm?.write {
+                realm?.deleteAll()
+            }
+        } catch {
+            return
+        }
+    }
 }

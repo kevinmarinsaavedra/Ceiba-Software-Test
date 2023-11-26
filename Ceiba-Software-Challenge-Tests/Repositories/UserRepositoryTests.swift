@@ -35,9 +35,10 @@ class UserRepositoryTests: XCTestCase, TestUtils {
         
         expAsync = expectation(description: "waiting for data")
         localDatabaseManagerMock.users = data
+        userServiceMock.filename = "Users"
         var resultData: [User]!
         
-        let expectedData: [User] = data
+        let expectedDataCount = 7
         
         //Act
         sut.fetchUser { result in
@@ -51,7 +52,8 @@ class UserRepositoryTests: XCTestCase, TestUtils {
         
         //Assert
         XCTAssertTrue(localDatabaseManagerMock.spyGetUsers)
-        XCTAssertEqual(resultData, expectedData)
+        XCTAssertTrue(userServiceMock.spyFetchUser)
+        XCTAssertEqual(resultData.count, expectedDataCount)
     }
     
     func test_fetchUser_userService_success() {

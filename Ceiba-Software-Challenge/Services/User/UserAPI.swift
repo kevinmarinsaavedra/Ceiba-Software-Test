@@ -21,7 +21,7 @@ final class UserAPI: UserServiceProtocol {
     
     func fetchUser( completion: @escaping (Result<[User], ErrorService>) -> Void) {
                 
-        networkService.request(endpoint: UserEndpoint.fetchUsers) { result in
+        _ = networkService.request(endpoint: UserEndpoint.fetchUsers) { result in
             
             switch result {
             case .success(let data):

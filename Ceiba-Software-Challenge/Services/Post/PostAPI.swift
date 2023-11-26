@@ -26,7 +26,7 @@ final class PostAPI: PostServiceProtocol {
             return
         }
         
-        networkService.request(endpoint: PostEndpoint.fetchPosts(parameters: parameter)) { result in
+        _ = networkService.request(endpoint: PostEndpoint.fetchPosts(parameters: parameter)) { result in
             
             switch result {
             case .success(let data):

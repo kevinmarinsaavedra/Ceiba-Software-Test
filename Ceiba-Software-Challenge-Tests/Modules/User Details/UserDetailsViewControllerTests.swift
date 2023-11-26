@@ -76,6 +76,7 @@ class UserDetailsViewControllerTests: XCTestCase, TestUtils {
         awaitExpAsync()
         
         //Assert
+        XCTAssertTrue(postRepositoryMock.spyFetchPosts)
         XCTAssertTrue(userDetailsPresenterMock.spyFetchPosts, "It should be called fetchPosts()")
         XCTAssertFalse(sut.userDetailsVM.posts.isEmpty, "It should not be an empty array")
         
