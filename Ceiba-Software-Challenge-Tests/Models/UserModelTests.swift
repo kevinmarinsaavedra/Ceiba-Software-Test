@@ -13,8 +13,14 @@ class UserModelTests: XCTestCase {
     
     func test_userCodable() throws {
         //Arrange
-        let sut = User(id: 1, name: "John Doe", username: "john_doe", email: "john@example.com",
-                        address: nil, phone: "123456789", website: "example.com", company: nil)
+        let sut = User(id: 1, 
+                       name: "John Doe",
+                       username: "john_doe",
+                       email: "john@example.com",
+                       address: nil,
+                       phone: "123456789", 
+                       website: "example.com",
+                       company: nil)
 
         //Act
         let data = try JSONEncoder().encode(sut)
@@ -26,12 +32,30 @@ class UserModelTests: XCTestCase {
     
     func test_userEquatable() {
         // Arrange
-        let user1 = User(id: 1, name: "John Doe", username: "john_doe", email: "john@example.com",
-                         address: nil, phone: "123456789", website: "example.com", company: nil)
-        let user2 = User(id: 1, name: "John Doe", username: "john_doe", email: "john@example.com",
-                         address: nil, phone: "123456789", website: "example.com", company: nil)
-        let user3 = User(id: 2, name: "Jane Doe", username: "jane_doe", email: "jane@example.com",
-                         address: nil, phone: "987654321", website: "example2.com", company: nil)
+        let user1 = User(id: 1, 
+                         name: "John Doe",
+                         username: "john_doe",
+                         email: "john@example.com",
+                         address: nil, 
+                         phone: "123456789",
+                         website: "example.com",
+                         company: nil)
+        let user2 = User(id: 1, 
+                         name: "John Doe",
+                         username: "john_doe",
+                         email: "john@example.com",
+                         address: nil,
+                         phone: "123456789",
+                         website: "example.com",
+                         company: nil)
+        let user3 = User(id: 2, 
+                         name: "Jane Doe",
+                         username: "jane_doe",
+                         email: "jane@example.com",
+                         address: nil,
+                         phone: "987654321",
+                         website: "example2.com",
+                         company: nil)
 
         // Assert
         XCTAssertEqual(user1, user2, "Users with the same ID should be equal")

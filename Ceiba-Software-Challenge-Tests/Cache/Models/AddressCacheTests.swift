@@ -11,18 +11,15 @@ import RealmSwift
 
 class AddressCacheTests: XCTestCase {
 
-    // Configuración específica para las pruebas
     var realm: Realm!
 
     override func setUpWithError() throws {
         super.setUp()
-        // Configuración de Realm en memoria para las pruebas
         let configuration = Realm.Configuration(inMemoryIdentifier: "testRealm")
         realm = try! Realm(configuration: configuration)
     }
 
     override func tearDownWithError() throws {
-        // Limpiar la base de datos en memoria después de cada prueba
         try! realm.write {
             realm.deleteAll()
         }
@@ -45,10 +42,10 @@ class AddressCacheTests: XCTestCase {
 
         // Assert
         let retrievedAddress = realm.objects(AddressCache.self).first
-        XCTAssertNotNil(retrievedAddress)
-        XCTAssertEqual(retrievedAddress?.street, "123 Main St")
-        XCTAssertEqual(retrievedAddress?.suite, "Apt 4")
-        XCTAssertEqual(retrievedAddress?.city, "City")
-        XCTAssertEqual(retrievedAddress?.zipcode, "12345")
+        XCTAssertNotNil(retrievedAddress, "Expected to retrieve an address")
+        XCTAssertEqual(retrievedAddress?.street, "123 Main St", "Unexpected street address")
+        XCTAssertEqual(retrievedAddress?.suite, "Apt 4", "Unexpected suite information")
+        XCTAssertEqual(retrievedAddress?.city, "City", "Unexpected city name")
+        XCTAssertEqual(retrievedAddress?.zipcode, "12345", "Unexpected zipcode")
     }
 }

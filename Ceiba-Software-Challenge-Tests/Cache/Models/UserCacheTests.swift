@@ -11,18 +11,15 @@ import RealmSwift
 
 class UserCacheTests: XCTestCase {
 
-    // Configuración específica para las pruebas
     var realm: Realm!
 
     override func setUpWithError() throws {
         super.setUp()
-        // Configuración de Realm en memoria para las pruebas
         let configuration = Realm.Configuration(inMemoryIdentifier: "testRealm")
         realm = try! Realm(configuration: configuration)
     }
 
     override func tearDownWithError() throws {
-        // Limpiar la base de datos en memoria después de cada prueba
         try! realm.write {
             realm.deleteAll()
         }
@@ -56,12 +53,11 @@ class UserCacheTests: XCTestCase {
 
         // Assert
         let retrievedUser = realm.objects(UserCache.self).first
-        XCTAssertNotNil(retrievedUser)
-        XCTAssertEqual(retrievedUser?.id, 1)
-        XCTAssertEqual(retrievedUser?.name, "Pablo")
-        XCTAssertEqual(retrievedUser?.username, "Llanos")
-        XCTAssertEqual(retrievedUser?.email, "test@test.com")
-        XCTAssertEqual(retrievedUser?.phone, "555555")
-        XCTAssertEqual(retrievedUser?.website, "www.test.com")
+        XCTAssertEqual(retrievedUser?.id, 1, "Expected user ID to be 1")
+        XCTAssertEqual(retrievedUser?.name, "Pablo", "Unexpected user name")
+        XCTAssertEqual(retrievedUser?.username, "Llanos", "Unexpected username")
+        XCTAssertEqual(retrievedUser?.email, "test@test.com", "Unexpected email address")
+        XCTAssertEqual(retrievedUser?.phone, "555555", "Unexpected phone number")
+        XCTAssertEqual(retrievedUser?.website, "www.test.com", "Unexpected website URL")
     }
 }

@@ -11,17 +11,14 @@ import RealmSwift
 
 class GeoCacheTests: XCTestCase {
 
-    // Configuración específica para las pruebas
     var realm: Realm!
 
     override func setUp() {
-        // Configuración de Realm en memoria para las pruebas
         let configuration = Realm.Configuration(inMemoryIdentifier: "testRealm")
         realm = try! Realm(configuration: configuration)
     }
 
     override func tearDown() {
-        // Limpiar la base de datos en memoria después de cada prueba
         try! realm.write {
             realm.deleteAll()
         }
@@ -38,8 +35,8 @@ class GeoCacheTests: XCTestCase {
 
         // Assert
         let retrievedGeo = realm.objects(GeoCache.self).first
-        XCTAssertNotNil(retrievedGeo)
-        XCTAssertEqual(retrievedGeo?.lat, "10.2213454")
-        XCTAssertEqual(retrievedGeo?.lng, "-7.2213454")
+        XCTAssertNotNil(retrievedGeo, "Expected to retrieve a GeoCache object")
+        XCTAssertEqual(retrievedGeo?.lat, "10.2213454", "Unexpected latitude value")
+        XCTAssertEqual(retrievedGeo?.lng, "-7.2213454", "Unexpected longitude value")
     }
 }

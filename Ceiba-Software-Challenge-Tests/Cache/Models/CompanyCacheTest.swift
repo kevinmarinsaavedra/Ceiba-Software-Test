@@ -40,9 +40,9 @@ class CompanyCacheTests: XCTestCase {
 
         // Assert
         let retrievedCompany = realm.objects(CompanyCache.self).first
-        XCTAssertNotNil(retrievedCompany)
-        XCTAssertEqual(retrievedCompany?.name, "ABC Inc")
-        XCTAssertEqual(retrievedCompany?.catchPhrase, "Connecting People")
-        XCTAssertEqual(retrievedCompany?.bs, "Best Service")
+        XCTAssertNotNil(retrievedCompany, "Expected to retrieve a CompanyCache object")
+        XCTAssertEqual(retrievedCompany?.name, "ABC Inc", "Unexpected company name")
+        XCTAssertEqual(retrievedCompany?.catchPhrase, "Connecting People", "Unexpected catch phrase")
+        XCTAssertEqual(retrievedCompany?.bs, "Best Service", "Unexpected business service information")
     }
 }

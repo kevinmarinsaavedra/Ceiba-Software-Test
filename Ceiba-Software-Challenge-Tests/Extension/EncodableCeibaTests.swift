@@ -5,6 +5,7 @@
 //  Created by Kevin Marin on 25/11/23.
 //
 
+import Foundation
 import XCTest
 @testable import Ceiba_Software_Challenge
 
@@ -23,7 +24,8 @@ class EncodableCeibaTests: XCTestCase {
         }
         
         //Assert
-        XCTAssertEqual(dictionaryResult["property"] as? String, "mock")
+        let expectedDictionary: [String: Any] = ["property": "mock"]
+        XCTAssertEqual(dictionaryResult as NSDictionary, expectedDictionary as NSDictionary)
     }
 }
 

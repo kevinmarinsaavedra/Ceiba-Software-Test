@@ -30,7 +30,7 @@ class UIColorCeibaTest: XCTestCase, TestUtils {
         
         awaitExpAsync()
 
-        XCTAssertEqual(red, 0.0, "Red component should be 1.0")
+        XCTAssertEqual(red, 0.0, "Red component should be 0.0")
         XCTAssertEqual(green, 1.0, "Green component should be 1.0")
         XCTAssertEqual(blue, 0.0, "Blue component should be 1.0")
         XCTAssertEqual(alpha, 1.0, "Alpha component should be 1.0")
@@ -54,9 +54,9 @@ class UIColorCeibaTest: XCTestCase, TestUtils {
 
         awaitExpAsync()
         
-        XCTAssertEqual(red, 0.0, "Red component should be 1.0")
+        XCTAssertEqual(red, 0.0, "Red component should be 0.0")
         XCTAssertEqual(green, 1.0, "Green component should be 1.0")
-        XCTAssertEqual(blue, 0.0, "Blue component should be 1.0")
+        XCTAssertEqual(blue, 0.0, "Blue component should be 0.0")
         XCTAssertEqual(alpha, 1.0, "Alpha component should be 1.0")
     }
     
@@ -107,7 +107,7 @@ class UIColorCeibaTest: XCTestCase, TestUtils {
         print(color.description)
         
         XCTAssertEqual(red, 0.0, "Red component should be 0.0")
-        XCTAssertEqual(green, 0.0, "Green component should be 1.0")
+        XCTAssertEqual(green, 0.0, "Green component should be 0.0")
         XCTAssertEqual(blue, 0.0, "Blue component should be 0.0")
         XCTAssertEqual(alpha, 1.0, "Alpha component should be 1.0")
     }

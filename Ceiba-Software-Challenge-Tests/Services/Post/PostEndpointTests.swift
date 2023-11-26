@@ -19,11 +19,11 @@ class PostEndpointTests: XCTestCase {
         //Act
         
         //Assert
-        XCTAssertEqual(endpoint.method, .get)
-        XCTAssertEqual(endpoint.path, "\(Ceiba.BaseURL.URL)/posts")
-        XCTAssertNotNil(endpoint.parameter)
-        XCTAssertNil(endpoint.header)
-        XCTAssertNil(endpoint.interceptor)
-        XCTAssertTrue(endpoint.encoding is URLEncoding)
+        XCTAssertEqual(endpoint.method, .get, "Expected HTTP method to be GET")
+        XCTAssertEqual(endpoint.path, "\(Ceiba.BaseURL.URL)/posts", "Unexpected endpoint path")
+        XCTAssertNotNil(endpoint.parameter, "Expected parameters to be non-nil")
+        XCTAssertNil(endpoint.header, "Expected headers to be nil")
+        XCTAssertNil(endpoint.interceptor, "Expected interceptor to be nil")
+        XCTAssertTrue(endpoint.encoding is URLEncoding, "Expected encoding to be URLEncoding")
     }
 }

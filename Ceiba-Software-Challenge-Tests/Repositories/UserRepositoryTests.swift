@@ -51,9 +51,9 @@ class UserRepositoryTests: XCTestCase, TestUtils {
         self.awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(localDatabaseManagerMock.spyGetUsers)
-        XCTAssertTrue(userServiceMock.spyFetchUser)
-        XCTAssertEqual(resultData.count, expectedDataCount)
+        XCTAssertTrue(localDatabaseManagerMock.spyGetUsers, "Expected to call 'getUsers' on localDatabaseManagerMock")
+        XCTAssertTrue(userServiceMock.spyFetchUser, "Expected to call 'fetchUser' on userServiceMock")
+        XCTAssertEqual(resultData.count, expectedDataCount, "Unexpected number of users retrieved from local database")
     }
     
     func test_fetchUser_userService_success() {
@@ -74,8 +74,8 @@ class UserRepositoryTests: XCTestCase, TestUtils {
         self.awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(userServiceMock.spyFetchUser)
-        XCTAssertFalse(resultData.isEmpty, "Should not be an array empty")
+        XCTAssertTrue(userServiceMock.spyFetchUser, "Expected to call 'fetchUser' on userServiceMock")
+        XCTAssertFalse(resultData.isEmpty, "Expected retrieved users from userServiceMock not to be empty")
     }
     
     func test_fetchUser_userService_failure() {
@@ -99,7 +99,7 @@ class UserRepositoryTests: XCTestCase, TestUtils {
         self.awaitExpAsync()
         
         //Assert
-        XCTAssertTrue(userServiceMock.spyFetchUser)
-        XCTAssertEqual(resultError, expectedError)
+        XCTAssertTrue(userServiceMock.spyFetchUser, "Expected to call 'fetchUser' on userServiceMock")
+        XCTAssertEqual(resultError, expectedError, "Unexpected error returned from userServiceMock")
     }
 }

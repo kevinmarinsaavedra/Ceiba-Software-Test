@@ -13,7 +13,10 @@ class PostModelTests: XCTestCase {
     
     func test_postCodable() {
         //Arrange
-        let sut = Post(userID: 1, id: 1, title: "happy friday", body: "thanks so much team")
+        let sut = Post(userID: 1,
+                       id: 1,
+                       title: "happy friday",
+                       body: "thanks so much team")
         var decodedPost: Post!
         
         //Act
@@ -31,9 +34,18 @@ class PostModelTests: XCTestCase {
     
     func test_postEquatable() {
         //Arrange
-        let post1 = Post(userID: 1, id: 1, title: "happy friday", body: "thanks so much team")
-        let post2 = Post(userID: 1, id: 1, title: "happy saturday", body: "thanks so much people")
-        let post3 = Post(userID: 2, id: 2, title: "happy sunday", body: "thanks so much guys")
+        let post1 = Post(userID: 1, 
+                         id: 1,
+                         title: "happy friday",
+                         body: "thanks so much team")
+        let post2 = Post(userID: 1,
+                         id: 1, 
+                         title: "happy saturday",
+                         body: "thanks so much people")
+        let post3 = Post(userID: 2,
+                         id: 2,
+                         title: "happy sunday",
+                         body: "thanks so much guys")
         
         //Act
         
